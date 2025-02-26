@@ -43,11 +43,11 @@ h1 {
     --color-departures: steelblue;
     --color-arrivals: darkorange;
     --color: color-mix(
-  in oklch,
-  var(--color-departures) calc(100% * var(--departure-ratio)),
-  var(--color-arrivals)
-);
-fill: var(--color); 
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+    );
+    fill: var(--color); 
 }
 
 /* Header styling */
@@ -81,34 +81,34 @@ input[type="range"] {
     color: gray;
     font-style: italic;
     margin-top: 0.3em; /* Space between slider and (any time) */
-}
 
-.legend {
-        display: flex;
-        gap: 1em;
-        margin-block: 1em;
-        align-items: center;
-      }
-      
-.legend > div {
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-size: 14px;
-        background-color: lightgray;
-        --departure-ratio: 0; /* Default */
-        color: white;
-      }
-      
-      /* Apply color mixing for legend items based on departure ratio */
-.legend > div {
-        --color-departures: steelblue;
-        --color-arrivals: darkorange;
-        --color: color-mix(
-          in oklch,
-          var(--color-departures) calc(100% * var(--departure-ratio)),
-          var(--color-arrivals)
-        );
-        background-color: var(--color);
-}
-      
 
+    .legend > div::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        background: var(--color);
+        display: inline-block;
+        border-radius: 50%;
+    }
+    
+    /* Align text differently for each swatch */
+    .legend > div:nth-child(1) {
+        text-align: left;
+    }
+    
+    .legend > div:nth-child(2) {
+        text-align: center;
+    }
+    
+    .legend > div:nth-child(3) {
+        text-align: right;
+    }
+    
+    /* Legend label */
+    .legend-label {
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+}
